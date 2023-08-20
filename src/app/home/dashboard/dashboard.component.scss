@@ -1,0 +1,57 @@
+body {
+    // font-family: verdana, sans-serif;
+    font-size: 12px;
+    // width: 100%;
+}
+  
+// .header {
+//     // width: 100%;
+//     background: #ccc;
+//     padding: 20px;
+//     text-align: center;
+// }
+  
+.footer {
+    clear: right;
+    background: #eee;
+    padding: 20px;
+    margin-bottom: 1px;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+//======================================>
+
+
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+mat-sidenav {
+    width: 280px;
+    padding:15px;
+}
+.mat-drawer { 
+    background-color: #023075;
+    color:#fff
+}
+.main-content {
+    padding:20px;
+}
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 100px; 
+  width: 100px; 
+  margin-top: 30px; 
+  margin-left: 70px;
+  cursor: pointer;
+}
+

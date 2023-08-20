@@ -1,0 +1,50 @@
+<div class="cont">
+
+  <div class="container">
+
+    <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+
+        <br>
+        <div style="font-size: 30px; margin-left: 250px;">
+          Log In
+        </div><br><br>
+        <div >
+            <label for="email">Username</label>
+            <input class="inputText" type="text" id="email" name="email" placeholder="type your email.."
+            required email #email="ngModel" ngModel>
+
+            <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+                <div *ngIf="email.errors.required">
+                  Email is required
+                </div>
+                <div *ngIf="email.errors.email">
+                  Invalid Email Address
+                </div>
+              </div>
+        </div>
+
+        <label>Password</label>
+        <div class="input-container">
+            
+            <input class="inputPass" [type]="show ? 'text' : 'password'"  id="pass" name="pass" placeholder="type your password .."
+            required pass minlength="8" #pass="ngModel" ngModel>
+            <i class="icon" (click)="eyeBtn()"><mat-icon style="cursor: pointer;">remove_red_eye</mat-icon></i><br>
+
+        </div>
+
+        <div *ngIf="!pass?.valid && (pass?.dirty || pass?.touched)" class="error">
+            <div *ngIf="pass.errors.required">
+                Password is required
+            </div>
+            <div *ngIf="pass.errors.minlength">
+                Password Minimum Length is {{pass.errors.minlength?.requiredLength}}
+            </div>
+        </div><br>
+      
+        <button type="button" (click)="submitBtn(formData)" >Login</button>
+    </form>
+
+    <div><span style="margin-left: 210px;"> New User ?  </span><span style="color: blue; cursor: pointer;" (click)="navToSignUp()">Register/SignUp</span></div>
+
+  </div>
+</div>

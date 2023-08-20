@@ -1,0 +1,75 @@
+<div class="container">
+  <form  [formGroup]="windowsForm">
+
+
+    <!-- <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Id</mat-label>
+      <input matInput type="number" formControlName="_id" id="_id" name="_id"  value="">
+      <mat-error *ngIf="windowsForm.controls._id?.hasError('required') && windowsForm.controls._id?.touched">required</mat-error>
+    </mat-form-field> -->
+
+  
+
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" id="name" name="name"  value="">
+        <mat-error *ngIf="windowsForm.controls.name?.hasError('required') && windowsForm.controls.name?.touched">required</mat-error>
+      </mat-form-field>
+
+
+
+
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Barcode</mat-label>
+        <input matInput type="text" formControlName="barcode" id="barcode" name="barcode"  value="">
+        <mat-error *ngIf="windowsForm.controls.barcode?.hasError('required') && windowsForm.controls.barcode?.touched">required</mat-error>
+      </mat-form-field>
+
+
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>CreatedOn</mat-label>
+        <input matInput [matDatepicker]="createdOn" formControlName="createdOn" type="text" id="createdOn" name="createdOn">
+        <mat-datepicker-toggle matSuffix [for]="createdOn"></mat-datepicker-toggle>
+        <mat-datepicker #createdOn></mat-datepicker>
+      </mat-form-field>
+      <mat-error *ngIf="windowsForm.controls.createdOn?.hasError('required') && windowsForm.controls.createdOn?.touched">required</mat-error>
+      <br>
+
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>ExpiredOn</mat-label>
+        <input matInput [matDatepicker]="expiredOn" formControlName="expiredOn" type="text" id="expiredOn" name="expiredOn">
+        <mat-datepicker-toggle matSuffix [for]="expiredOn"></mat-datepicker-toggle>
+        <mat-datepicker #expiredOn></mat-datepicker>
+      </mat-form-field>
+      <mat-error *ngIf="windowsForm.controls.expiredOn?.hasError('required') && windowsForm.controls.expiredOn?.touched">required</mat-error>
+      <br>
+
+
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price" id="price" name="price"  value="">
+        <mat-error *ngIf="windowsForm.controls.price?.hasError('required') && windowsForm.controls.price?.touched">required</mat-error>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Qty</mat-label>
+        <input matInput type="number" formControlName="qty" id="qty" name="qty"  value="">
+        <mat-error *ngIf="windowsForm.controls.qty?.hasError('required') && windowsForm.controls.qty?.touched">required</mat-error>
+      </mat-form-field>
+
+
+      <hr>
+
+
+      <button mat-raised-button color="primary" (click)="submitBtn()">Submit</button> &nbsp;&nbsp;&nbsp;
+      <button mat-raised-button color="primary" (click)="resetBtn()">Reset</button>
+      
+    </form>
+
+</div>

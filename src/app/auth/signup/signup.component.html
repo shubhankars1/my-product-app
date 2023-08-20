@@ -1,0 +1,84 @@
+<div class="cont">
+
+  <div class="container">
+    
+    <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+
+       <br>
+    <div style="font-size: 30px; margin-left: 240px;">
+      Register
+    </div><br><br>
+
+      <div>
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="type your name.." 
+          required minlength="3" #name="ngModel" ngModel>
+
+          <div *ngIf="!name?.valid && (name?.dirty || name?.touched)" class="error">
+              <div *ngIf="name.errors.required">
+                First Name is required
+              </div>
+              <div *ngIf="name.errors.minlength">
+                First Name Minimum Length is {{name.errors.minlength?.requiredLength}}
+              </div>
+            </div>
+      </div>
+    
+
+      <div >
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="type your email.."
+          required email #email="ngModel" ngModel>
+
+          <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+              <div *ngIf="email.errors.required">
+                Email is required
+              </div>
+              <div *ngIf="email.errors.email">
+                Invalid Email Address
+              </div>
+            </div>
+      </div>
+
+      <div>
+            <label>Password</label>
+            <input type="password" class="form-control" id="pass" name="pass" placeholder="type your password .."
+            required pass minlength="8" #pass="ngModel" ngModel>
+
+            <div *ngIf="!pass?.valid && (pass?.dirty || pass?.touched)" class="error">
+              <div *ngIf="pass.errors.required">
+                Password is required
+              </div>
+              <div *ngIf="pass.errors.minlength">
+                Password Minimum Length is {{pass.errors.minlength?.requiredLength}}
+              </div>
+            </div>
+      </div>  
+      
+      <div>
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" id="cpass" name="cpass" placeholder="retype your password .."
+            required pass minlength="8" #cpass="ngModel" ngModel>
+
+            <div *ngIf="!cpass?.valid && (cpass?.dirty || cpass?.touched)" class="error">
+              <div *ngIf="cpass.errors.required">
+                Password is required
+              </div>
+              <div *ngIf="cpass.errors.minlength">
+                Password Minimum Length is {{cpass.errors.minlength?.requiredLength}}
+              </div>
+            </div>
+      </div>
+      
+        <br>
+
+         <button type="button" (click)="submitBtn(formData)" [disabled]="!formData.form.valid" >SignUp</button>
+      </form>
+
+</div>
+
+</div>
+
+
+<br>
+

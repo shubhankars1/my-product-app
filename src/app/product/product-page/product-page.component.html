@@ -1,0 +1,102 @@
+<div>
+    
+    <div>
+        <mat-form-field appearance="fill" style="width: 15%;">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+          <input matEndDate placeholder="End date" [(ngModel)]="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+          <button style="height: 48px; cursor: pointer;" (click)="searchBtn()"><mat-icon>search</mat-icon></button>      
+    </div>
+
+<!-- ============================ -->
+    <div style="float: right; margin-right: 30px; cursor: pointer;" (click)="addInfoDialog()">
+        <mat-icon  style="margin-left: 30px;">add_circle</mat-icon>
+        <h4 style="text-align: center;">Add New Item</h4>
+    </div>
+    
+</div>
+
+  
+<div>
+    <!-- Filtering Data -->
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+      <!-- Mat Table -->
+    <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+  
+        <ng-container matColumnDef="_id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">ID</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let product">{{product._id}}</mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by string">Name</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let product">{{product.name}}</mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="barcode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Barcode</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let product">{{product.barcode}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="createdOn">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">CreatedOn</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let product">{{product.createdOn}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expiredOn">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">ExpiredOn</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let product">{{product.expiredOn}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Price</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let product">{{product.price | currency:'INR':'symbol-narrow':'2.2-2'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qty">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Qty</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let product">{{product.qty}}</mat-cell>
+        </ng-container>
+
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef >Action</mat-header-cell>
+            <mat-cell *matCellDef="let product">
+                <span (click) = "deleteDialog(product)" class="material-icons-outlined" style="cursor:pointer;">
+                    <mat-icon>delete</mat-icon>
+                  </span>&nbsp;&nbsp;&nbsp;
+        
+                  <span (click) = "openDialog(product)" class="material-icons-outlined" style="cursor: pointer;">
+                    <mat-icon>create</mat-icon>
+                  </span>
+            </mat-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+        <!-- <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns" 
+                (click)="onRowClicked(row)">
+        </mat-row>
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+
+    </mat-table>
+
+    <mat-paginator [length]="dataLength" [pageSize]="5"
+                    [pageSizeOptions]="[3, 5, 7]" 
+                    showFirstLastButtons>
+    </mat-paginator>
+</div>

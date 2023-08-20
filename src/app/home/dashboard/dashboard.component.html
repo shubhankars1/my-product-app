@@ -1,0 +1,104 @@
+<!-- ================================== -->
+
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" #sidenav opened position="start">
+    left panel <br>
+
+    <img class="avatar" src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" (click)="avatarBtn()" ><br><br>
+    <div style="margin: auto; width: 50%;"><span>Hi &nbsp;&nbsp;{{name}}</span></div>
+
+    <hr><br>
+
+    <div>
+      <div (click)="navToDashboard()" style="cursor: pointer; display: flex; align-items: center;">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        <span style="text-align: center; font-size: 20px;  margin-left: 5px;">    Home</span><br><br>
+      </div>
+        
+      <div (click)="navToProduct()" style="cursor: pointer; display: flex; align-items: center;">
+        <mat-icon>assessment</mat-icon>
+        <span style="text-align: center; font-size: 20px; margin-left: 5px;">Statistics</span><br><br>
+      </div>
+        
+      <div (click)="navToAlert()" style="cursor: pointer; display: flex; align-items: center;">
+        <mat-icon> contact_phone</mat-icon>
+        <span style="text-align: center; font-size: 20px;  margin-left: 5px;">Contact</span><br><br>
+      </div>
+
+      <div (click)="navToEmail()" style="cursor: pointer; display: flex; align-items: center;">
+        <mat-icon> email</mat-icon>
+        <span style="text-align: center; font-size: 20px;  margin-left: 5px;">Email</span><br><br>
+      </div>
+
+      <div style="cursor: pointer;  display: flex; align-items: center;">
+        <mat-icon>share</mat-icon>
+        <span style="text-align: center; font-size: 20px;  margin-left: 5px;" (click)="reachBtn()">Reach Us</span><br><br>
+      </div>
+        
+      <br><br><br><br><br><br>
+      <hr><br>
+      <div (click)="logoutAndNavToHome()" style="cursor: pointer; display: flex; align-items: center;">
+        <mat-icon>account_circle</mat-icon>
+        <span style="text-align: center; font-size: 20px;  margin-left: 5px;">    Logout</span><br><br>
+      </div>
+        
+
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      Dashboard
+
+      <span class="toolbar-spacer"></span>
+      <span style="cursor: pointer;" (click)="accountBtn()">My Account</span> 
+    </mat-toolbar>
+    <div class="main-content">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+
+<!-- ======================== -->
+    <hr>
+  <div class="content">
+    <h1>Main Body</h1>
+
+    <button mat-raised-button color="accent" (click)="navBtn()" >Product Page</button>
+    <div>
+      
+    </div>
+    <app-product-page></app-product-page>
+
+  </div>
+
+  <!-- ************ -->
+
+  <hr>
+  <div style="height: 200px; width: 100%;" *ngIf=userinfo>
+    <br><br>
+    <h1>Hello, {{name}}</h1><br>
+    <h3>your email is {{email}}</h3>
+  </div>
+  <br><br>
+
+  <!-- ************ -->
+
+  <div class="footer">
+    <strong>FOOTER</strong>
+  </div>
+
+  <!-- ======================== -->
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+
+    
+    
+
+    
+    
+
